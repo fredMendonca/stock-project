@@ -3,7 +3,6 @@ package com.api.stockproject.controllers;
 import com.api.stockproject.services.EmailService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +17,8 @@ public class EmailController {
     private final JavaMailSender mailSender;
     private final EmailService emailService;
     private static final Logger logger = LogManager.getLogger(EmailController.class);
+    private static final String EMAIL_SEND_CONFIRMATION = "Email successfully sent";
+    private static final String EMAIL_SEND_ERROR = "Error sending email";
 
     public EmailController(JavaMailSender mailSender, EmailService emailService) {
         this.mailSender = mailSender;
@@ -30,13 +31,13 @@ public class EmailController {
         try {
             MimeMessage mail = mailSender.createMimeMessage();
 
-            mailSender.send(emailService.SendEmail(mail, userEmail));
+            mailSender.send(emailService.sendEmail(mail, userEmail));
             logger.info("Email successfully sent.");
-            return "Email successfully sent";
+            return EMAIL_SEND_CONFIRMATION;
         } catch (Exception e) {
             logger.error("Error sending email!");
             e.printStackTrace();
-            return "Error sending email";
+            return EMAIL_SEND_ERROR;
         }
     }
 }

@@ -9,18 +9,18 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class UserControllerTest {
-    UserService userService = mock(UserService.class);
+    UserController userController = mock(UserController.class);
     @Test
     void return_Saved_User() {
         User user = populateUser();
-        when(userService.createUser(user)).thenReturn(user);
+        when(userController.createUser(user)).thenReturn(user);
         assertNotNull(user);
     }
     @Test
     void valid_saved_User() {
         String userTestname = "Joao";
         User user = populateUser();
-        when(userService.createUser(user)).thenReturn(user);
+        when(userController.createUser(user)).thenReturn(user);
         assertEquals(userTestname, user.getName());
     }
     private User populateUser(){

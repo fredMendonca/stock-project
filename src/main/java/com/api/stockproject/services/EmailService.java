@@ -8,7 +8,7 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 public class EmailService {
-    public MimeMessage SendEmail(MimeMessage mail, String userEmail) throws MessagingException {
+    public MimeMessage sendEmail(MimeMessage mail, String userEmail) throws MessagingException {
         MimeMessageHelper helper = new MimeMessageHelper( mail );
         helper.setTo( userEmail );
         helper.setSubject( "Order shipping confirmation" );
