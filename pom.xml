@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.api</groupId>
 	<artifactId>stock-project</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>stock-project</name>
 	<description>projeto para desenvolvimento de stock</description>
 	<properties>
