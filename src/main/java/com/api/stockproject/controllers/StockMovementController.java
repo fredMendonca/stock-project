@@ -1,5 +1,6 @@
 package com.api.stockproject.controllers;
 
+import com.api.stockproject.dtos.StockMovementDto;
 import com.api.stockproject.models.StockMovement;
 import com.api.stockproject.services.StockMovementService;
 import org.apache.logging.log4j.LogManager;
@@ -26,10 +27,9 @@ public class StockMovementController {
 
     // Create a stock movement
     @PostMapping("/")
-    public StockMovement createStockMovement(@RequestBody StockMovement stockMovement) {
+    public StockMovement createStockMovement(@RequestBody StockMovementDto stockMovementDto) {
         logger.info("starting the creation of StockMovements...");
-        stockMovement.setCreationDate(Date.valueOf(LocalDate.now()));
-        return stockMovementService.createStockMovement(stockMovement);
+        return stockMovementService.createStockMovement(stockMovementDto);
     }
 
     // Read all stock movements
@@ -46,9 +46,9 @@ public class StockMovementController {
 
     // Update a stock movement
     @PutMapping("/{stockMovementId}")
-    public StockMovement updateStockMovement(@PathVariable Long stockMovementId, @RequestBody StockMovement stockMovement) {
+    public StockMovement updateStockMovement(@PathVariable Long stockMovementId, @RequestBody StockMovementDto stockMovementDto) {
         logger.info("starting the update of StockMovements...");
-        return stockMovementService.updateStockMovement(stockMovementId, stockMovement);
+        return stockMovementService.updateStockMovement(stockMovementId, stockMovementDto);
     }
 
     // Delete a stock movement
