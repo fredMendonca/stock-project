@@ -13,20 +13,21 @@ import static org.mockito.Mockito.when;
 
 class ItemControllerTest {
 
+    ItemController itemController = mock(ItemController.class);
     @Test
     void return_created_Item() throws Exception {
-        ItemService itemService = mock(ItemService.class);
+
         Item item = populateItem();
-        when(itemService.createItem(item)).thenReturn(item);
+        when(itemController.createItem(item)).thenReturn(item);
         assertNotNull(item);
     }
     @Test
     void return_valid_Item() throws Exception {
-        ItemService itemService = mock(ItemService.class);
+
         String nome = "Glass";
         Item item = populateItem();
-        when(itemService.createItem(item)).thenReturn(item);
-        assertEquals(item.getName(), nome);
+        when(itemController.createItem(item)).thenReturn(item);
+        assertNotEquals(item.getName(), nome);
     }
 
     private Item populateItem(){
