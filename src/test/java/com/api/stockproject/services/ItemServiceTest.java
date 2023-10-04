@@ -14,24 +14,24 @@ class ItemServiceTest {
     @Test
     void return_saved_Item_() {
         ItemRepository itemRepository = mock(ItemRepository.class);
-        Item item = new Item();
-        item.setId(1L);
-        item.setName("Glass");
-
+        Item item = populateItem();
         when(itemRepository.save(item)).thenReturn(item);
         assertNotNull(item);
-
     }
 
     @Test
-    void valid_saved_Item_() {
+    void valid_saved_Item() {
         ItemRepository itemRepository = mock(ItemRepository.class);
-        String itemName = "Glass";
+        String itemTestName = "Glass";
+        Item item = populateItem();
+        when(itemRepository.save(item)).thenReturn(item);
+        assertNotEquals(itemTestName, item.getName());
+    }
+
+    private Item populateItem(){
         Item item = new Item();
         item.setId(1L);
         item.setName("globe");
-
-        when(itemRepository.save(item)).thenReturn(item);
-        assertNotEquals(itemName, item.getName());
+        return item;
     }
 }
