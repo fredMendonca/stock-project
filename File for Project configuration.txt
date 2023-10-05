@@ -1,0 +1,72 @@
+- Database: Postgres
+- Configuration file: application.properties
+
+- log file: "logApp.log" ( project folder)
+
+EndPoints
+
+Email	
+	http://localhost:8080/email-send/{emailUser}
+	
+Order
+	GET       - http://localhost:8080/orders/
+	GET BY ID - http://localhost:8080/orders/{id}
+	POST      - http://localhost:8080/orders/
+	PUT       - http://localhost:8080/orders/{id}
+	DEL       - http://localhost:8080/orders/{id}
+	
+
+Item
+	GET       - http://localhost:8080/items/
+	GET BY ID - http://localhost:8080/items/{id}
+	POST      - http://localhost:8080/items/
+	PUT       - http://localhost:8080/items/{id}
+	DEL       - http://localhost:8080/items/{id}
+	
+StockMovement	
+	GET		  -	 http://localhost:8080/stockmovements/
+	GET BY ID -  http://localhost:8080/stockmovements/{id}
+	POST      -  http://localhost:8080/stockmovements/
+	PUT       -  http://localhost:8080/stockmovements/{id}
+	DEL       -  http://localhost:8080/stockmovements/{id}
+	
+User
+	GET       - http://localhost:8080/users/
+	GET BY ID - http://localhost:8080/users/{id}
+	POST      - http://localhost:8080/users/
+	PUT       - http://localhost:8080/users/{id}
+	DEL       - http://localhost:8080/users/{id}
+	
+	
+	
+USER REGISTRATION(File Format - JSON):
+	Example:
+		{
+			"name" : "Maria",   
+			"email" : "maria@gmail.com"
+ 
+		}
+		
+ITEM REGISTRATION(JSON):
+	Example:
+		{
+			"name" : "Ventilador " 
+		}
+		
+STOCKMOVEMENT REGISTRATION:
+	Example:
+		   {                
+			"item_id": 33,
+			"quantity": 4
+		   }
+ORDER REGISTRATION
+	Example:
+		{ 
+			"item_id": 33,
+			"quantity": 4,
+			"user_id" : 2
+        }	
+		
+
+* All database and email provider configuration must be performed in the class "application.properties".		
+* To test email sending to a specific email, the OrderService class must be changed.
