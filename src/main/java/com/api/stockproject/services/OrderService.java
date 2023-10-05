@@ -39,8 +39,8 @@ public class OrderService {
         if (order.getUser().getId()!= null){
             if(order.getUser().getEmail() != null){
                 //email test ----------
-                String email = "frederyco.mendonca@gmail.com";
-                emailController.sendMail(email);
+                //String email = "emailTest@gmail.com";
+                emailController.sendMail(order.getUser().getEmail());
 
             }
         }
